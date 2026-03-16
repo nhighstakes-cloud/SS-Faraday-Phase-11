@@ -1,40 +1,72 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+import serial
+import time
+import csv
+from datetime import datetime
 
-name: Python package
+# === PHASE 11 CONFIGURATION ===
+PORT = '/dev/ttyUSB0'  # Update to your COM port (e.g., 'COM3' on Windows)
+BAUD_RATE = 9600        # Standard for Sartorius/Mettler-Toledo
+TARGET_GAP = 12.3       # Nanometers (Unity Gap)
+DRIVE_FREQ = 963        # Hz (Goldstone Resonance)
+STABILIZATION_SEC = 600 # 10-minute null baseline
+LOG_FILE = f"ss_faraday_log_{datetime.now().strftime('%Y%m%d_%H%M')}.csv"
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+def initialize_balance():
+    """Initializes the serial connection to the micro-balance."""
+    try:
+        ser = serial.Serial(PORT, BAUD_RATE, timeout=1)
+        print(f"[SUCCESS] Connected to Micro-balance on {PORT}")
+        return ser
+    except Exception as e:
+        print(f"[ERROR] Could not connect to hardware: {e}")
+        print("[NOTE] Ensure RS232/USB cable is seated and balance is in 'Continuous Output' mode.")
+        return None
 
-jobs:
-  build:
+def log_data(timestamp, weight, lock_status):
+    """Writes experimental data to the CSV file."""
+    with open(LOG_FILE, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([timestamp, weight, lock_status])
 
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.9", "3.10", "3.11"]
+def run_phase_11():
+    balance = initialize_balance()
+    if not balance:
+        return
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint with flake8
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
-      run: |
-        pytest
+    print(f"--- SS FARADAY: PHASE 11 ACQUISITION START ---")
+    print(f"Targeting {TARGET_GAP}nm at {DRIVE_FREQ}Hz resonance.")
+    
+    # Initialize CSV Header
+    with open(LOG_FILE, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["Timestamp", "Mass_Reading_g", "Resonant_Lock"])
+
+    try:
+        while True:
+            # Read line from balance (standard output is usually a string like '  + 0.0000005 g')
+            line = balance.readline().decode('ascii').strip()
+            
+            if line:
+                try:
+                    # Extract numeric value
+                    current_weight = float(''.join(c for c in line if c.isdigit() or c in '.-'))
+                    ts = datetime.now().isoformat()
+                    
+                    # Log data - Assuming lock is 'Active' if script is running
+                    log_data(ts, current_weight, "ACTIVE")
+                    
+                    print(f"[{ts}] Mass: {current_weight} g | Lock: {DRIVE_FREQ}Hz")
+                    
+                except ValueError:
+                    continue # Skip malformed serial strings
+                    
+            time.sleep(0.1) # 10Hz sampling rate
+
+    except KeyboardInterrupt:
+        print("\n--- ACQUISITION HALTED BY NAVIGATOR ---")
+    finally:
+        balance.close()
+        print(f"[DATA] Results saved to {LOG_FILE}")
+
+if __name__ == "__main__":
+    run_phase_11()
