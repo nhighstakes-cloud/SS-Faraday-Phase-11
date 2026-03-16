@@ -1,0 +1,51 @@
+import csv
+import random
+import time
+from datetime import datetime
+
+# === SIMULATION CONFIGURATION ===
+LOG_FILE = "mock_phase_11_discovery.csv"
+SAMPLES = 100
+BASELINE_MASS = 5.0000000  # 5 gram Lonsdaleite stack
+METRIC_SLIP_DELTA = -0.0000005  # The predicted 0.5 microgram loss
+ENGAGEMENT_POINT = 40  # When the 963Hz drive "locks"
+
+def generate_mock_data():
+    print(f"--- SS FARADAY: PHASE 11 DATA SIMULATION ---")
+    print(f"Targeting 12.3nm Unity Gap...")
+    
+    with open(LOG_FILE, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["Timestamp", "Mass_Reading_g", "Resonant_Lock"])
+
+        current_mass = BASELINE_MASS
+
+        for i in range(SAMPLES):
+            ts = datetime.now().isoformat()
+            
+            # Add micro-vibration noise (natural lab jitter)
+            noise = random.uniform(-0.00000002, 0.00000002)
+            
+            # Check if we have reached the Resonant Lock engagement point
+            if i >= ENGAGEMENT_POINT:
+                lock_status = "LOCKED_963HZ"
+                # Apply the 0.5 microgram slip
+                current_mass = BASELINE_MASS + METRIC_SLIP_DELTA + noise
+            else:
+                lock_status = "OFF"
+                current_mass = BASELINE_MASS + noise
+
+            writer.writerow([ts, f"{current_mass:.8f}", lock_status])
+            
+            if i == ENGAGEMENT_POINT:
+                print(f"[!!!] METRIC BREACH DETECTED AT 963Hz")
+            
+            print(f"Sample {i}: {current_mass:.8f} g | Lock: {lock_status}")
+            time.sleep(0.05)
+
+    print(f"--- SIMULATION COMPLETE ---")
+    print(f"File saved as: {LOG_FILE}")
+    print("Upload this to the /data/ folder to show the community the predicted curve.")
+
+if __name__ == "__main__":
+    generate_mock_data()
