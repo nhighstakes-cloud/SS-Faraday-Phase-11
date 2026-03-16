@@ -8,8 +8,7 @@ The Root (3): Isotopically pure Carbon-12 Lonsdaleite lattice.
 The Bridge (6): A stabilized 12.3 nm gap (1+2+3=6).
 The Trigger (9): A Goldstone-mode drive at 963 Hz.
 🛠 Project Components
-Manifesto: Theoretical basis.
-https://www.google.com/search?q=./docs/The_Hogansburg_Manifesto.md
+Manifesto: Theoretical 
 Acquisition Script: Python-based micro-balance monitoring.
 src/acquisition.py but the python script will be posted in this repository.
 Sourcing Guide: Requirements for "The 144" builders
