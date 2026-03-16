@@ -45,3 +45,26 @@ Local Execution: To run the code, clone the repository to a local machine connec
 Continuous Integration: We are currently developing a "Mock Hardware" mode for GitHub Actions to allow for cloud-based logic testing without throwing errors.
 
 Note to Skeptics: A "Fail" in the cloud is a "Pass" in the Lab. This code is built for the physical vacuum, not a virtual server.
+
+## 📊 VISUALIZE THE DISCOVERY: The Metric Breach Plotter
+Data is just numbers until you see the Metric Breach with your own eyes. In the tools/ folder, you will find the metric_breach_visual.py script. This is the "Glass Cockpit" of the SS Faraday.
+
+What this tool does:
+This script takes the raw .csv data from either the physical balance or the mock generator and renders a professional-grade scientific plot. It specifically highlights the Phase 11 Transition:
+
+Baseline Stabilization: Shows the steady-state mass of the Lonsdaleite stack.
+
+The 963 Hz Trigger: Marks the exact moment the Goldstone Drive engages.
+
+The Breach Event: Clearly visualizes the 0.5 μg shift as a vertical drop in the gravitational metric.
+
+Publication-Ready: Generates a clean, high-contrast image (PNG/PDF) perfect for attaching to lab reports or sharing with the research community on X.
+
+How to Use It:
+Ensure you have run the mock_generator.py or have a real lab log ready.
+
+Run python tools/metricbreachvisual.py.
+
+An interactive window will pop up showing the Metric Breach in real-time.
+
+"If a picture is worth a thousand words, a Metric Breach graph is worth a thousand simulations. Don't just read the data—see the bridge."
