@@ -34,3 +34,22 @@ This repository represents 14 days of accelerated development, moving from conce
 
 > "The logic has moved from the terminal to the playground. Phase 11 proof-of-concept is now officially closed." — **James S. Gray Jr.**
 
+---
+
+### 💻 Getting Started
+To replicate the Phase 11 logic gate on your local environment:
+
+1. **Clone the repository:**
+   `git clone https://github.com/nhighstakes-cloud/SS-Faraday-Phase-11.git`
+2. **Install dependencies:**
+   `pip install -r requirements.txt`
+3. **Execute the flight computer logic:**
+   `python tools/mobile_flight_computer.py`
+
+### 🛰️ Phase 12 Roadmap: Hardware Integration
+We are transitioning from **Logic** to **Matter**. The gantry is being prepared for physical prototyping.
+
+- [ ] **Substrate Procurement:** Sourcing high-purity C-12 Lonsdaleite for metric plates.
+- [ ] **Vacuum Calibration:** Achieving 10⁻⁹ Torr baseline for the resonance chamber.
+- [ ] **Transducer Array:** Integration of the 963Hz frequency emitters.
+- [ ] **First Light:** Physical verification of the Casimir-Neutralization effect.
