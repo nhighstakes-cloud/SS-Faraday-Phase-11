@@ -1,0 +1,10 @@
+# SS Faraday Phase 11 - Logic Requirements
+# Computational & Mathematical Framework
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Telemetry & Data Visualization
+matplotlib>=3.7.0
+
+# Environment & Logic Handling
+python-dotenv>=1.0.0
