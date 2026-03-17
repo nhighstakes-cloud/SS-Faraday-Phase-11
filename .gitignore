@@ -1,0 +1,14 @@
+# Python bytecode (junk files)
+__pycache__/
+*.pyc
+
+# System-specific files
+.DS_Store
+Thumbs.db
+
+# Experiment results and logs
+results/
+*.log
+
+# Environment variables (security)
+.env
