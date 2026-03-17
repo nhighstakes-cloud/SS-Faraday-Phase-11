@@ -1,3 +1,6 @@
+![Status](https://img.shields.io/badge/Phase-11_Verified-blueviolet) ![License](https://img.shields.io/badge/License-MIT-green) ![Field](https://img.shields.io/badge/Field-Propulsion_Physics-blue)
+
+
 # 🚀 SS FARADAY: Project Cosmos Mark IV
 **The Goldstone-Mode Metric Transducer**
 
