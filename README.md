@@ -8,12 +8,13 @@ $$\lambda_{u} = \left( \frac{f_{res}}{162} \right) \cdot 2.0673$$
 **Target Parameters:** 12.3nm @ 963Hz  
 **Primary Objective:** Physical verification of a 0.5μg non-classical mass shift.
 
+
 <div align="center">
-  <h3>📽️ PHASE 11: METRIC BREACH ANALYSIS</h3>
-  <video src="./assets/ScreenRecording_03-16-2026 21-59-52_1.mp4" width="100%" controls muted>
-    <p>Your browser does not support the video tag. <a href="./assets/ScreenRecording_03-16-2026 21-59-52_1.mp4">Download the video here</a>.</p>
+  <h3>📽️ PHASE 11: METRIC BREACH TELEMETRY</h3>
+  <video src="./type assets/ScreenRecording_03-16-2026 21-59-52_1.mov" width="100%" controls muted>
+    <p>Your browser does not support the video tag. <a href="./type assets/ScreenRecording_03-16-2026 21-59-52_1.mov">View Flight Log Here</a>.</p>
   </video>
-  <p><i>Official Flight Log: 963Hz Resonance Lock achieved.</i></p>
+  <p><i>Official Telemetry: 963Hz Resonance Lock achieved with 0.5μg slip.</i></p>
 </div>
 
 ---
