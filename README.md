@@ -26,5 +26,5 @@ This repository represents 14 days of accelerated development, moving from conce
 > "If you want to find the secrets of the universe, think in terms of energy, frequency and vibration." — *Nikola Tesla*
 
 ---
-**Contact:** Lead Developer | [Your Name/Handle] | 144 Network Verified
+**Contact:** Lead Developer | James S. Gray Jr./Lead Project Engineer |Jamesgray_Jr@Hotmail.com | 144 Network Verified
 
