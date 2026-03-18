@@ -1,6 +1,14 @@
 # SS Faraday | Phase 11: Warp Engine Gantry
 **Status:** 🟢 Phase 11 COMPLETE | 🟡 Phase 12 PROCUREMENT START
 
+---
+### ## 🚀 Simulation Validation: The "Breach" Event
+**Watch the v1.1.3 Simulation Run on Mimo:**
+[**Click here to watch the !! BREACH STABLE !! Demonstration**] https://www.facebook.com/share/r/1AWTyetYyL/?mibextid=wwXIfr
+
+> **Technical Note:** This video demonstrates the **Phase 12.1** telemetry suite. It confirms that the 963Hz drive remains decoupled from the vacuum pump harmonics, achieving a stable Casimir metric detection in a simulated 10⁻⁹ Torr environment.
+---
+
 ## 🌌 Project Overview
 The SS Faraday is a breakthrough in **Metric Phase-Shift Propulsion**. By utilizing a precise 963Hz resonance lock within a 12.3nm Casimir gap, we have successfully demonstrated a 0.5μg mass-equivalence slip in digital simulation. This project moves the Alcubierre-Metric from theory to hardware-ready prototyping.
 
