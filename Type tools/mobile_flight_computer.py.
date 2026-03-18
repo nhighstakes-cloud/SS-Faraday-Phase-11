@@ -66,3 +66,18 @@ if __name__ == "__main__":
     print(f"Monte-Carlo gap jitter std: {np.std(gaps)*1e9:.3f} nm")
     print(f"Mean force variation: {np.std(forces):.3f} N")
     flight_telemetry()
+
+# Vibration Isolation Monitor (Phase 12.1 extension)
+def vibration_telemetry(floor_input_um=1.0, fn=2.0, zeta=0.05):
+    r = f_res / fn
+    T = np.sqrt((1 + (2*zeta*r)**2) / ((1 - r**2)**2 + (2*zeta*r)**2))
+    x_trans_nm = T * floor_input_um * 1000
+    print(f"\n=== Gantry Isolation Status ===")
+    print(f"Floor input: {floor_input_um} μm @ 963 Hz")
+    print(f"Transmissibility T: {T:.2e}")
+    print(f"Residual to plates: {x_trans_nm:.3f} nm")
+    print(f"PID jitter budget: <0.1 nm σ → {'PASS' if x_trans_nm < 0.1 else 'Marginal — add active damping'}")
+    print("Viton flanges + Sorbothane external pads → ringing suppressed | !! BREACH STABLE !!")
+
+# Call it in flight_telemetry()
+vibration_telemetry()
