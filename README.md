@@ -1,12 +1,22 @@
 # SS Faraday | Phase 11: Warp Engine Gantry
 **Status:** 🟢 Phase 11 COMPLETE | 🟡 Phase 12 PROCUREMENT START
 
+
 ---
 ### ## 🚀 Simulation Validation: The "Breach" Event
 **Watch the v1.1.3 Simulation Run on Mimo:**
 [**Click here to watch the !! BREACH STABLE !! Demonstration**] https://www.facebook.com/share/r/1AWTyetYyL/?mibextid=wwXIfr
 
 > **Technical Note:** This video demonstrates the **Phase 12.1** telemetry suite. It confirms that the 963Hz drive remains decoupled from the vacuum pump harmonics, achieving a stable Casimir metric detection in a simulated 10⁻⁹ Torr environment.
+
+### ## 📚 Scientific Context & Comparisons
+While the industry-standard **[Warp Factory](https://github.com/Nerf-Warp/WarpFactory)** provides the **Theoretical Cartography** (Mapping the Metric), the **SS Faraday** provides the **Physical Transducer** (Measuring the Casimir Force). 
+
+* **Warp Factory:** Solving Einstein Field Equations (The Map).
+* **SS Faraday:** Hardware implementation for 12.3nm Casimir Gap stability (The Ship).
+
+We aren't just simulating spacetime; we are building the hardware to probe its density at 12.3nm.
+
 ---
 
 ## 🌌 Project Overview
