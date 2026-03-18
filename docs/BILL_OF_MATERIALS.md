@@ -1,4 +1,4 @@
-# SS Faraday: Phase 12.1 BOM
+# SS Faraday: Phase 12.1 BILL OF MATERIALS (BOM)
 
 | Item | Manufacturer | Part/Model | Qty |
 | :--- | :--- | :--- | :--- |
@@ -7,4 +7,8 @@
 | **Diamond Plates** | Element Six / Op-Suppliers | Type-IIa λ/20 | 2 |
 | **PZT Stacks** | Thorlabs / PI | High-Q UHV Stack | 4 |
 | **Damping Pads** | Sorbothane Inc. | 10mm Sheets | 1 |
-| **Seal Kit** | Agilent/Edwards | Viton ISO-K Gaskets | 1 |
+| **Seal Kit** | Agilent / Edwards | Viton ISO-K Gaskets | 1 |
+| **Filter Cap** | Vishay / Murata | 10µF Low-ESR Polymer Cap | 2 |
+| **Thermal Straps** | Custom / TAI | OFHC Copper (Oxygen-Free) | 4 |
+| **HV DC Source** | Keithley / SRS | <5mV Ripple Lab Supply | 1 |
+
