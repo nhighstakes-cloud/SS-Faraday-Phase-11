@@ -58,6 +58,19 @@ This repository represents 14 days of accelerated development, moving from conce
 > "If you want to find the secrets of the universe, think in terms of energy, frequency and vibration." — *Nikola Tesla*
 
 ---
+
+## ## 🔬 III. Physical Apparatus & Experimental Setup
+To validate the **122.98x resonance scalar**, the following hardware environment is required. This setup is designed to isolate the **12.3nm gap** from terrestrial seismic and electromagnetic noise.
+
+* **Vacuum Control:** UHV Chamber at 10⁻⁹ Torr (Ref: Agilent Turbo-V 81-M).
+* **Nanopositioning:** Piezoelectric Stage with 0.1nm resolution (Ref: PI P-753.1CD).
+* **Metrology:** Laser Interferometry for real-time 12.3nm gap maintenance.
+* **Mass-Slip Detection:** Ultra-Microbalance with 0.1µg readability (Ref: Mettler Toledo UMX2).
+
+> [!IMPORTANT]
+> **Full technical requirements and component model numbers can be found in the [Hardware Specifications Documentation](./docs/Hardware_Specs.md).**
+
+---
 **Contact:** Lead Developer | James S. Gray Jr./Lead Project Engineer |Jamesgray_Jr@Hotmail.com | 144 Network Verified
 
 ### 🚀 Phase 11 Status: VERIFIED
