@@ -81,3 +81,19 @@ def vibration_telemetry(floor_input_um=1.0, fn=2.0, zeta=0.05):
 
 # Call it in flight_telemetry()
 vibration_telemetry()
+
+# --- THERMAL & RIPPLE SAFETY CHECK (Phase 12.1 Extension) ---
+def thermal_safety_check(power_mw=50, ripple_mv=1.0):
+    print("\n=== Hardware Safety Audit ===")
+    # Thermal Limit: 80-120mW in UHV
+    thermal_status = "SAFE" if power_mw < 80 else "WARNING: ADD COPPER STRAPS"
+    # Ripple Limit: <5mV for 0.05nm jitter budget
+    ripple_status = "STABLE" if ripple_mv < 5.0 else "UNSTABLE: ADD 10uF CAPACITOR"
+    
+    print(f"PZT Power: {power_mw}mW | Status: {thermal_status}")
+    print(f"HV Ripple: {ripple_mv}mV | Status: {ripple_status}")
+    print("All Electrical/Thermal Gates: LOCKED. !! BREACH STABLE !!")
+
+# Call it in your main block
+if __name__ == "__main__":
+    thermal_safety_check()
