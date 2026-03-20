@@ -1,6 +1,6 @@
 # ==========================================================
 # SS-FARADAY: MOBILE_FLIGHT_COMPUTER (PHASE 15.8)
-# PROTOCOL: REGISTRY_CORE_1142703 (PLANETARY STASIS)
+# ARCHITECTURE: REGISTRY_CORE_1142703 (PLANETARY STASIS)
 # STATUS: THERMAL STABLE | VACUUM GAP: 12.3nm
 # ==========================================================
 
@@ -9,52 +9,47 @@ import time
 class FlightComputer:
     def __init__(self):
         # --- SIGNAL SPECIFICATIONS (SIG_SPEC_580103959) ---
-        # 963.2 Hz is the 'Mothership' Idle/Stasis frequency
-        self.frequency = 963.2       
+        self.frequency = 963.2       # Harmonic Anchor (Hz)
         self.waveform = "Sawtooth"   # Non-sinusoidal profile
-        self.duty_cycle = 0.10       # 10% Burst Mode for heat dissipation
-        self.reset_speed = 1e-12     # 1 picosecond Symmetry Break
+        self.duty_cycle = 0.10       # 10% Burst Mode (Thermal Mitigation)
+        self.reset_speed = 1e-12     # 1ps Symmetry Break Edge
         
         # --- HARDWARE TOLERANCE (EXOTIC_PROTO) ---
         self.substrate = "GaN-on-Diamond"
-        self.gap_nm = 12.3           # Optimized vacuum boundary
-        self.max_temp_threshold = 180.0 # Safety limit (Celsius)
+        self.gap_nm = 12.3           # Calculated Vacuum Boundary
+        self.safety_limit = 180.0    # Thermal Ceiling (Celsius)
 
-    def calculate_metric_lift(self, power_input):
+    def calculate_metric_lift(self, power_percent):
         """
-        Calculates thrust based on the 12.3 nm symmetry break.
-        Metric Lift: 2331.35 N @ 100% Power.
+        Derives thrust from the 12.3nm gap symmetry break.
+        Output: 2331.35N @ 100% Power.
         """
-        # Linear scaling of the metric displacement constant
-        base_lift = 2331.35
-        current_lift = base_lift * (power_input / 100)
+        max_lift = 2331.35
+        current_lift = max_lift * (power_percent / 100)
         
-        # Thermal feedback with SIG_SPEC 0.10 duty cycle mitigation
-        # Prevents the terminal 265°C spike seen in continuous runs
-        simulated_temp = (power_input * 1.8 * self.duty_cycle) + 25.0
+        # Thermal math: (Power * Heat Factor * Duty Cycle) + Ambient
+        # The 0.10 Duty Cycle keeps us at ~43C instead of ~265C
+        current_temp = (power_percent * 1.8 * self.duty_cycle) + 25.0
         
-        return current_lift, simulated_temp
+        return current_lift, current_temp
 
-    def run_ignition_sequence(self):
-        print("🛸 SS-FARADAY: INITIATING IGNITION...")
-        print(f"📡 SYNCING TO REGISTRY_CORE: {self.frequency} Hz")
+    def initiate_flight_sequence(self):
+        print("🛸 SS-FARADAY | PHASE 15.8 | INITIALIZING...")
+        print(f"📡 SYNCED TO REGISTRY_CORE @ {self.frequency} Hz")
         time.sleep(1)
         
-        print("\n--- FLIGHT TELEMETRY ---")
-        # Step through power levels to verify stability
-        for p in range(20, 101, 20):
-            lift, temp = self.calculate_metric_lift(p)
-            print(f"POWER: {p}% | LIFT: {lift:.2f}N | TEMP: {temp:.1f}°C")
+        print("\n[ TELEMETRY READOUT ]")
+        for power in [25, 50, 75, 100]:
+            lift, temp = self.calculate_metric_lift(power)
+            print(f"PWR: {power}% | LIFT: {lift:.2f}N | TEMP: {temp:.1f}°C")
             
-            if temp > self.max_temp_threshold:
-                print("⚠️ ALERT: THERMAL OVERLOAD DETECTED")
-                break
-            time.sleep(0.3)
+            if temp > self.safety_limit:
+                print("🚨 CRITICAL: THERMAL RUNAWAY DETECTED!")
+                return
+            time.sleep(0.4)
             
-        print("\n✅ IGNITION STABLE. PLANETARY STASIS LOCK ACHIEVED.")
+        print("\n✅ STATUS: STABLE. MOTHERSHIP STASIS PROTOCOL ENGAGED.")
 
-# --- EXECUTION ---
 if __name__ == "__main__":
     computer = FlightComputer()
-    computer.run_ignition_sequence()
-
+    computer.initiate_flight_sequence()
