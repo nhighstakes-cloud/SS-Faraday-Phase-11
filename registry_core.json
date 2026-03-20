@@ -1,0 +1,8 @@
+{
+  "registry": "REGISTRY_CORE",
+  "data_id": "REF_1142703",
+  "frequency_target": 963.2,
+  "profile": "Non-Sinusoidal Sawtooth",
+  "classification": "Acoustic Metric Anomaly",
+  "hardware_spec": "EXOTIC_PROTO_V15"
+}
